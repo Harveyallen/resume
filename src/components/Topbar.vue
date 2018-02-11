@@ -13,7 +13,7 @@
           <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a>
         </div>
         <button class="button primary">保存</button>
-        <button class="button">预览</button>
+        <button class="button" @click.prevent="preview">预览</button>
       </div>
     </div>
     <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
@@ -59,6 +59,10 @@
         this.signUpDialogVisible = false
         this.signInDialogVisible = false
         this.$store.commit('setUser', user)
+      },
+      preview() {
+
+        this.$emit('preview')
       }
     }
   }

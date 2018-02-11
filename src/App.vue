@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div class=page>
+    <div class=page v-bind:class="{previewMode:previewMode}">
       <header>
-        <Topbar/>
+        <Topbar class="Topbar" @preview="preview"/>
       </header>
       <main>
-        <ResumeEditor/>
-        <ResumePreview/>
+        <ResumeEditor  class="ResumeEditor"/>
+        <ResumePreview  class="Resumepreview"/>
       </main>
+      <el-button class="exit-btn" type="primary" size="medium" @click="exitpreview">退出预览</el-button>
     </div>
+
   </div>
 </template>
 
@@ -22,18 +24,32 @@
   import store from './store/index'
   import AV from './lib/leancloud'
   import getAVUser from './lib/getAVUser'
+  import Vue from 'vue'
+  import Element from 'element-ui'
+  Vue.use(Element, { size: 'small' })
   export default {
     name: 'app',
     store,
     components: { Topbar, ResumeEditor, ResumePreview},
+    data() {
+      return {previewMode:false};
+    },
+    methods:{
+         preview(){this.previewMode=true
+         },
+         exitpreview(){this.previewMode=false
+        }
+    },
     created() {
       document.body.insertAdjacentHTML('afterbegin', icons) //
-      let state = localStorage.getItem('state')
-      if(state){
-        state = JSON.parse(state)
-      }
-      this.$store.commit('initState', state)
-      this.$store.commit('setUser', getAVUser())
+//      let state = localStorage.getItem('state')
+//      if(state){
+//        state = JSON.parse(state)
+//      }
+      let state=this.$store.state;
+      this.$store.commit('initState', state);
+      this.$store.commit('setUser', getAVUser());
+
     }
   }
 </script>
@@ -58,15 +74,12 @@
      width: 100%; /* 试试不加这句会怎样 */
      align-self: center;
    }
-  }
   #resumeEditor{
     min-width: 35%;
-    background: #444;
   }
   #resumePreview{
     flex-grow: 1;
     margin-left: 16px;
-    background: #777;
   }
   svg.icon{
     height: 1em;
@@ -74,5 +87,29 @@
     fill: currentColor;
     vertical-align: -0.1em;
     font-size:16px;
+  }
+  }
+  .previewMode{
+    height: 100%;
+  }
+  .previewMode #topbar{
+    display: none;
+  }
+  .previewMode #resumeEditor{
+    display: none;
+  }
+  .previewMode #resumePreview{
+    max-width: 960px;
+    margin: 30px auto;
+    height:100%;
+  }
+  .exit-btn{
+    display: none;
+  }
+  .previewMode .exit-btn{
+    display: block;
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
   }
 </style>

@@ -12,10 +12,10 @@ export default {
   zh_CN: {
     resume: {
       profile: {
-        name: '名称',
+        name: '姓名',
         city: '城市',
         title: '职位',
-        birthday: '生日'
+        birthday: '出生年月'
       },
       workHistory: {
         _: '工作经历',
@@ -39,8 +39,8 @@ export default {
       },
       contacts: {
         _: '联系方式',
-        contact: '途径',
-        content: '内容'
+        contact: '名称',
+        details: '详情'
       }
     }
   }
