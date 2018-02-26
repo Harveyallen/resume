@@ -62,8 +62,6 @@
     background: #EAEBEC;
   >main{
      flex-grow: 1;
-   }
-  >main{
      min-width: 1024px;
      max-width: 1440px;
      margin-top: 16px;
@@ -88,6 +86,9 @@
     vertical-align: -0.1em;
     font-size:16px;
   }
+  .exit-btn{
+    display: none;
+  }
   }
   .previewMode{
     height: 100%;
@@ -103,9 +104,7 @@
     margin: 30px auto;
     height:100%;
   }
-  .exit-btn{
-    display: none;
-  }
+
   .previewMode .exit-btn{
     display: block;
     position: fixed;
