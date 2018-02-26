@@ -8,7 +8,7 @@
         <ResumeEditor  class="ResumeEditor"/>
         <ResumePreview  class="Resumepreview"/>
       </main>
-      <el-button class="exit-btn" type="primary" size="medium" @click="exitpreview">退出预览</el-button>
+      <el-button id="exit-btn" type="primary" size="medium" @click="exitpreview">退出预览</el-button>
     </div>
 
   </div>
@@ -86,7 +86,7 @@
     vertical-align: -0.1em;
     font-size:16px;
   }
-  .exit-btn{
+  #exit-btn{
     display: none;
   }
   }
@@ -105,7 +105,7 @@
     height:100%;
   }
 
-  .previewMode .exit-btn{
+  .previewMode #exit-btn{
     display: block;
     position: fixed;
     bottom: 45px;
